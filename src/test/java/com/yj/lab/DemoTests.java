@@ -8,7 +8,7 @@ public class DemoTests {
     public static void main(String[] args) {
 
         log.info("message");
-        log.info("test github push");
+        log.info("test github push2");
 
     }
 
