@@ -1,0 +1,23 @@
+#端口
+server:
+  port: 8080
+
+#日志
+logging:
+  level:
+    root: info
+
+#活跃配置
+spring:
+  application:
+    name: lab
+  profiles:
+    active: es,dev
+  thymeleaf:
+    prefix: classpath:/mail/
+    mode: HTML
+    encoding: UTF-8
+
+
+
+

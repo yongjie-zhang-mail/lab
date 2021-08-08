@@ -1,0 +1,74 @@
+#主配置
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://10.122.2.165:3307/profile?characterEncoding=UTF-8&useUnicode=true&useSSL=false&useCompression=false&zeroDateTimeBehavior=round&serverTimezone=Asia/Shanghai
+      username: gucp_user
+      password: gucp_user@dev
+  redis:
+    sentinel:
+      master: sentinel10.122.81.181
+      nodes: 10.122.81.181:26379,10.122.81.195:26379,10.122.81.174:26379
+    password: Kv0604H1613u
+    jedis:
+      pool:
+        # 最大阻塞等待时间(负数表示没限制)
+        max-wait: 20000
+        # 最大空闲
+        max-idle: 5000
+        # 最小空闲
+        min-idle: 10
+        # 最大连接数
+        max-active: 5000
+        # 超时时间
+        timeout: 10000
+
+  elasticsearch:
+    schema: http
+    address: 10.122.189.108:9202,10.122.189.109:9202,10.122.189.110:9202,10.122.189.111:9202
+    connectTimeout: 1000
+    socketTimeout: 30000
+    connectionRequestTimeout: 500
+    maxConnectNum: 100
+    maxConnectPerRoute: 100
+
+
+#swagger
+swagger:
+  documentation:
+    enabled: true
+
+#############################################################################################
+#  redis:
+#    host: 10.120.112.224
+#    port: 6379
+#    timeout: 100000
+#    jedis:
+#      pool:
+#        max-active: 60000
+#        max-idle: 200
+#        max-wait: 20000
+
+#primary-datasource:
+#  driver-class-name: com.mysql.cj.jdbc.Driver
+#  jdbc-url: jdbc:mysql://10.122.61.79:3306/member
+#  username: a_appconnect
+#  password: StcH7C:C
+#  type: com.zaxxer.hikari.HikariDataSource
+#  hikari:
+#    minimum-idle: 5
+#    maximum-pool-size: 200
+#    auto-commit: true
+#    idle-timeout: 30000
+#    pool-name: DatebookHikariCP
+#    # 默认30分钟，应配置比数据库超时配置，少30s
+#    max-lifetime: 60000
+#    connection-timeout: 30000
+#    # 防止连接池释放不了导致无法连接数据库配置
+#    login-timeout: 5
+#    validation-timeout: 3000
+#    connection-test-query: SELECT 1
+
+
+
