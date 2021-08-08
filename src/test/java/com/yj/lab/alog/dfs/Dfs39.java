@@ -4,10 +4,8 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class Dfs39 {
@@ -19,9 +17,22 @@ public class Dfs39 {
                 2, 3, 6, 7
         };
         int target = 7;
-
         List<List<Integer>> result = Solution.combinationSum(candidates, target);
         log.info(JSON.toJSONString(result));
+
+//        int[] candidates = new int[]{
+//                2, 3, 5
+//        };
+//        int target = 8;
+//        List<List<Integer>> result = Solution.combinationSum(candidates, target);
+//        log.info(JSON.toJSONString(result));
+
+//        int[] candidates = new int[]{
+//                2
+//        };
+//        int target = 1;
+//        List<List<Integer>> result = Solution.combinationSum(candidates, target);
+//        log.info(JSON.toJSONString(result));
 
 
     }
@@ -40,11 +51,13 @@ public class Dfs39 {
             if (sumTemp >= target) {
                 if (sumTemp == target) {
                     // 去重
-                    List<Integer> sortTemp = temp.stream()
-                            .sorted(Comparator.comparing(Function.identity()))
-                            .collect(Collectors.toList());
+//                    List<Integer> sortTemp = temp.stream()
+//                            .sorted(Comparator.comparing(Function.identity()))
+//                            .collect(Collectors.toList());
+                    List<Integer> sortTemp = new ArrayList<>(temp);
+                    Collections.sort(sortTemp);
                     if (!result.contains(sortTemp)) {
-                        result.add(new ArrayList<>(temp));
+                        result.add(sortTemp);
                     }
 //                    result.add(new ArrayList<>(temp));
                 }
@@ -66,11 +79,10 @@ public class Dfs39 {
         static int sum(List<Integer> temp) {
 
             int sum = 0;
-//            sum = temp.stream().mapToInt(t -> t).sum();
-            for (Integer i : temp) {
-                sum += i;
-            }
-
+            sum = temp.stream().mapToInt(t -> t).sum();
+//            for (Integer i : temp) {
+//                sum += i;
+//            }
             return sum;
 
         }
