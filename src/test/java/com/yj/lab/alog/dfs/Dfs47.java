@@ -3,35 +3,45 @@ package com.yj.lab.alog.dfs;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dfs46 {
+public class Dfs47 {
 
     public static void main(String[] args) {
-//        int[] nums = new int[]{
-//                1, 2, 3
-//        };
-//        List<List<Integer>> permute = Solution.permute(nums);
-//        System.out.println(permute);
 
         int[] nums = new int[]{
                 1, 1, 2
         };
-        List<List<Integer>> permute = Solution.permute(nums);
-        System.out.println(permute);
+        List<List<Integer>> result = Solution.permuteUnique(nums);
+        System.out.println(result);
+
+//        int[] nums = new int[]{
+//                1,2,3
+//        };
+//        List<List<Integer>> result = Solution.permuteUnique(nums);
+//        System.out.println(result);
+
+
     }
 
     static class Solution {
-        public static List<List<Integer>> permute(int[] nums) {
+        public static List<List<Integer>> permuteUnique(int[] nums) {
+
             List<List<Integer>> result = new ArrayList<>();
+
             boolean[] pbs = new boolean[nums.length];
             List<Integer> temp = new ArrayList<>();
             dfs(nums, pbs, temp, result);
+
             return result;
         }
 
-        static void dfs(int[] nums, boolean[] pbs, List<Integer> temp, List<List<Integer>> result) {
+        private static void dfs(int[] nums, boolean[] pbs, List<Integer> temp, List<List<Integer>> result) {
             // 截止条件
             if (temp.size() == nums.length) {
-                result.add(new ArrayList<>(temp));
+                List<Integer> tempSame = new ArrayList<>(temp);
+//                Collections.sort(tempSame);
+                if (!result.contains(tempSame)) {
+                    result.add(tempSame);
+                }
             }
 
             // 候选节点
