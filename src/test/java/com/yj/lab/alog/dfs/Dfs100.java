@@ -2,6 +2,12 @@ package com.yj.lab.alog.dfs;
 
 public class Dfs100 {
 
+    /**
+     * 100. 相同的树
+     *
+     * @param args
+     */
+
     public static void main(String[] args) {
 
 //        输入：p = [1,2,3], q = [1,2,3]
